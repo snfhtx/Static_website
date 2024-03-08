@@ -463,13 +463,20 @@
     border-radius: 10px 10px 0 0;
 }
 
+.vesitable-img {
+    height: 400px;
+}
+
 .vesitable  .vesitable-img img {
     transition: 0.5s;
 }
 
-.vesitable  .vesitable-img img:hover {
-    transform: scale(1.2);
+@media (min-width: 942px) {
+    .vesitable  .vesitable-img img:hover {
+        transform: scale(1.2);
+    }
 }
+
 
 .testimonial-item:hover {
     box-shadow: 0 0 55px var(--bs-primary);

@@ -98,13 +98,13 @@
                 items:1
             },
             576:{
-                items:1
+                items:1.8
             },
             768:{
-                items:2
+                items:2.2
             },
             992:{
-                items:3
+                items:3.2
             },
             1200:{
                 items:4
@@ -149,6 +149,8 @@
     });
 
     $(document).ready(function () {
+
+        console.log(window.innerWidth);
         // var $container = $('.zoomIn');
         // var $image = $container.find('.zoom');
         // var $imageW = $image.width();
@@ -166,86 +168,89 @@
         var $imageH;
         var element_id;
         
+        if(window.innerWidth < 942) {
+            return;
+        }
+        else {
 
-        $('.zoomIn').on({           
+            $('.zoomIn').on({           
 
-            mouseenter: function (e) {
-                
-                //console.log($(e.target));
-                element_id = $(e.target).attr('id');
-                //console.log(element_id);
-
-                $image = $('#'+element_id);
-                //console.log($image);
-                
-                var container_id = element_id+"-big";
-                //console.log(container_id);
-                //console.log(e.view.$image);
-                //console.log($imageLarge);
-                //console.log(e.view.$image.prevObject);
-                
-                var $container = $('#'+container_id);
-                //console.log($container);
-                // $image = $container.find('.zoom');
-                $imageW = $image.width();
-                $imageH = $image.height();
-                //console.log($imageW, $imageH);
-                var $imageClone = $image.clone();
-                $imageLarge = $imageClone.width($imageW * 2);
-                $imageLarge.hide().prependTo($container).fadeIn(100);
-                if(element_id.substring(0,4) == "best")
-                {
-                    $image.hide();
-                }
+                mouseenter: function (e) {
                     
-                //console.log($imageLarge);
-            },
-            mousemove: function (e) {
-                
-                var mouseX = e.pageX - $(this).offset().left;
-                var mouseY = e.pageY - $(this).offset().top;
-                var amountMovedX = Math.round(-mouseX + $imageW / 2);
-                var amountMovedY = Math.round(-mouseY + $imageH / 2);
-                //var amountMovedX = Math.round(mouseX / $imageW * 100) / 100 * (imageLargeW - $imageW);
-                //var amountMovedY = Math.round(mouseY / $imageH * 100) / 100 * (imageLargeH - $imageH);
-                if(element_id.substring(0,4) == "hero")
-                {
-                    $imageLarge.css({
-                        'top': amountMovedY + 'px',
-                        'left': amountMovedX + 'px',
-                        'position': 'absolute',
-                        'transform': 'scale(2,2)',
-                        'object-fit': 'contain',
-                    });
+                    
+                    //console.log($(e.target));
+                    element_id = $(e.target).attr('id');
+                    //console.log(element_id);
+
+                    $image = $('#'+element_id);
+                    //console.log($image);
+                    
+                    var container_id = element_id+"-big";
+                    //console.log(container_id);
+                    //console.log(e.view.$image);
+                    //console.log($imageLarge);
+                    //console.log(e.view.$image.prevObject);
+                    
+                    var $container = $('#'+container_id);
+                    //console.log($container);
+                    // $image = $container.find('.zoom');
+                    $imageW = $image.width();
+                    $imageH = $image.height();
+                    //console.log($imageW, $imageH);
+                    var $imageClone = $image.clone();
+                    $imageLarge = $imageClone.width($imageW * 2);
+                    $imageLarge.hide().prependTo($container).fadeIn(100);
+                    if(element_id.substring(0,4) == "best")
+                    {
+                        $image.hide();
+                    }
+                        
+                    //console.log($imageLarge);
+                },
+                mousemove: function (e) {
+                    
+                    var mouseX = e.pageX - $(this).offset().left;
+                    var mouseY = e.pageY - $(this).offset().top;
+                    var amountMovedX = Math.round(-mouseX + $imageW / 2);
+                    var amountMovedY = Math.round(-mouseY + $imageH / 2);
+                    //var amountMovedX = Math.round(mouseX / $imageW * 100) / 100 * (imageLargeW - $imageW);
+                    //var amountMovedY = Math.round(mouseY / $imageH * 100) / 100 * (imageLargeH - $imageH);
+                    if(element_id.substring(0,4) == "hero")
+                    {
+                        $imageLarge.css({
+                            'top': amountMovedY + 'px',
+                            'left': amountMovedX + 'px',
+                            'position': 'absolute',
+                            'transform': 'scale(2,2)',
+                            'object-fit': 'contain',
+                        });
+                    }
+                    else {
+                        $imageLarge.css({
+                            'top': amountMovedY + 'px',
+                            'left': amountMovedX + 'px',
+                            'position': 'relative',
+                            'transform': 'scale(2,2)',
+                            'object-fit': 'contain',                        
+                            'overflow': 'hidden'
+                        });
+                    }
+                    
+                },
+                mouseleave: function () {
+                    if(element_id.substring(0,4) == "best")
+                    {
+                        $image.show();
+                    }                
+                    //console.log($imageLarge[0]);
+                    $imageLarge.remove();
+                    $imageLarge = undefined;
+                    
                 }
-                else {
-                    $imageLarge.css({
-                        'top': amountMovedY + 'px',
-                        'left': amountMovedX + 'px',
-                        'position': 'relative',
-                        'transform': 'scale(2,2)',
-                        'object-fit': 'contain',                        
-                        'overflow': 'hidden'
-                    });
-                }
                 
-            },
-            mouseleave: function () {
-                if(element_id.substring(0,4) == "best")
-                {
-                    $image.show();
-                }                
-                //console.log($imageLarge[0]);
-                $imageLarge.remove();
-                $imageLarge = undefined;
-                
-            }
-        });
-
-
-
-
-        });
+            });
+        }    
+    });
 
     
 
