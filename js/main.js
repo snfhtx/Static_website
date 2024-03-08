@@ -232,7 +232,8 @@
                             'position': 'relative',
                             'transform': 'scale(2,2)',
                             'object-fit': 'contain',                        
-                            'overflow': 'hidden'
+                            'overflow': 'hidden',
+                            'box-shadow': '0 0 55px 10px var(--bs-secondary)'
                         });
                     }
                     
