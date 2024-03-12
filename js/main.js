@@ -23,7 +23,7 @@
         } else {
             if ($(this).scrollTop() > 55) {
                 $('.fixed-top').addClass('shadow').css('top', -55);
-                console.log("Dhan tan tan");
+                
             } else {
                 $('.fixed-top').removeClass('shadow').css('top', 0);
             }
@@ -46,6 +46,26 @@
         }
     });
     
+    
+    $(".count").each(function () {
+        
+        $(this)
+            .prop("Counter", 0)
+            .animate(
+                {
+                    Counter: $(this).text(),
+                },
+                {
+                    duration: 6000,
+                    easing: "swing",
+                    step:function (now) {
+                        now = Number(Math.ceil(now)).toLocaleString('en');
+                        $(this).text(now).addClass('h1');
+                    },
+                }
+            );        
+    });
+
     
    // Back to top button
    $(window).scroll(function () {
