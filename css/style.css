@@ -514,10 +514,6 @@ featurs-item:hover * {
 }
 
 
-.testimonial-item:hover {
-    box-shadow: 0 0 55px var(--bs-primary);
-}
-
 .vesitable .owl-stage {
     margin: 50px 0;
     position: relative;

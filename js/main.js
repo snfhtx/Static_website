@@ -66,6 +66,13 @@
             );        
     });
 
+    // $(".testimonial-item").on('mouseenter', function () {
+        
+    //     if ($(window).width() > 992) {
+    //         $(".brand-face").css('box-shadow','0 0 55px 10px var(--bs-secondary)');
+    //     }
+    // });
+
     
    // Back to top button
    $(window).scroll(function () {
