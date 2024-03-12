@@ -23,12 +23,28 @@
         } else {
             if ($(this).scrollTop() > 55) {
                 $('.fixed-top').addClass('shadow').css('top', -55);
+                console.log("Dhan tan tan");
             } else {
                 $('.fixed-top').removeClass('shadow').css('top', 0);
             }
         } 
     });
     
+
+    $(".navbar-brand").on('mouseover', function () {
+        
+        if ($(window).width() > 992 && $(document).scrollTop() > 55) {
+            $('.fixed-top').css('top',0);
+        }
+    });
+
+    $(".navbar-brand").on('mouseleave', function () {
+        
+
+        if ($(window).width() > 992 && $(document).scrollTop() > 55) {
+            $('.fixed-top').css('top',-55);
+        }
+    });
     
     
    // Back to top button
@@ -146,6 +162,31 @@
             }
         }
         button.parent().parent().find('input').val(newVal);
+    });
+
+    $(".product__details__pic__slider").owlCarousel({
+        loop: true,
+        margin: 20,
+        items: 4,
+        dots: true,
+        smartSpeed: 1200,
+        autoHeight: false,
+        autoplay: true
+    });
+
+    $('.product__details__pic__slider img').on('mouseenter', function () {
+        $(this).addClass("chosen-thumb");
+        var imgurl = $(this).data('imgbigurl');
+        var bigImg = $('.product__details__pic__item--large').attr('src');
+        if (imgurl != bigImg) {
+            $('.product__details__pic__item--large').attr({
+                src: imgurl
+            });
+        }
+    });
+
+    $('.product__details__pic__slider img').on('mouseleave', function () {
+        $(this).removeClass("chosen-thumb");
     });
 
     $(document).ready(function () {
