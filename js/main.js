@@ -29,7 +29,17 @@
             }
         } 
     });
-    
+
+    $("img").mousedown(function(e){
+        e.preventDefault();
+        console.log("Prevent");
+    });
+
+    $("img").on("contextmenu",function(e){
+        return false;
+    });
+
+      
 
     $(".navbar-brand").on('mouseover', function () {
         
