@@ -183,9 +183,18 @@
     transition: .5s;
 }
 
-.navbar {
-    height: 125px;
-    border-bottom: 1px solid rgba(255, 255, 255, .1);
+@media (min-width: 1200px) {
+    .navbar {
+        height: 125px;
+        border-bottom: 1px solid rgba(255, 255, 255, .1);
+    }
+}
+
+@media (max-width: 1200px) {
+    .navbar {
+        height: 175px;
+        border-bottom: 1px solid rgba(255, 255, 255, .1);
+    }
 }
 
 
