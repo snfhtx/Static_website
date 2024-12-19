@@ -331,6 +331,28 @@
         }    
     });
 
+    $(document).ready(function() {
+        // Function to switch tabs
+        function switchTab(index) {
+            console.log("Switching_",index);
+            $('.nav-item a')[index].click();
+        }
+    
+        // Function to cycle through tabs
+        function cycleTabs() {
+            var tabs = $('.nav-item a');
+            console.log(tabs);
+            var currentIndex = 0;
+            console.log("Called");
+            setInterval(function() {
+                currentIndex = (currentIndex + 1) % tabs.length;
+                switchTab(currentIndex);
+            }, 3000); // Change tab every 5 seconds (5000 milliseconds)
+        }
+    
+        // Start cycling when the document is ready
+        cycleTabs();
+    });
     
 
 })(jQuery);
