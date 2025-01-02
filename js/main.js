@@ -347,7 +347,7 @@
             setInterval(function() {
                 currentIndex = (currentIndex + 1) % tabs.length;
                 switchTab(currentIndex);
-            }, 3000); // Change tab every 5 seconds (5000 milliseconds)
+            }, 5000); // Change tab every 5 seconds (5000 milliseconds)
         }
     
         // Start cycling when the document is ready
